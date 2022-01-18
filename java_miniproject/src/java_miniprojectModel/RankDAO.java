@@ -40,18 +40,19 @@ public class RankDAO {
 			e.printStackTrace();
 		}
 	}
-	public boolean insertRank(String nickname, int score) {
+	public void insertRank(String nickname, int score) {
 		
 		boolean check = false;
 		
 		try {
 			connect();
 			
-			String sql = "insert into rank valuse ("
+			String sql = "insert into rank valuse (";
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
 		
+	
 	}
-	
-	
 }
 

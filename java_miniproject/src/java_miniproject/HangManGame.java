@@ -24,7 +24,7 @@ public class HangManGame {
 			System.out.print("[1].로그인 [2].회원가입 [3].종료" );
 			menu1 = sc.nextInt();
 		
-		while(true) {
+/*		while(true) {
 			if(menu1 == 1) {
 				System.out.print("ID : ");
 				id = sc.next();
@@ -95,7 +95,7 @@ public class HangManGame {
 			else {
 				System.out.println("잘못 입력하였습니다. 다시입력해주세요!");
 			}
-		}
+		}*/
 		
 				
 	}
