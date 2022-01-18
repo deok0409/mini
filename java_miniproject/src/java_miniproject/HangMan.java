@@ -2,13 +2,15 @@ package java_miniproject;
 import java.util.*;
 import java.io.*;
 public class HangMan {
-	
-		   int HIDDENCHAR; // 숨기는 글자 개수를 사용자에게서 입력 받음
-		   StringBuffer hiddenWord; // 숨긴 글자를 가진 단어
-		   String newWord; // 게임을 위해 선정된 단어
-		   Scanner scanner; // 키 입력
-		   int failCount; // 틀린 횟수
-		   
+		
+		int HIDDENCHAR; // 숨기는 글자 개수를 사용자에게서 입력 받음
+		StringBuffer hiddenWord; // 숨긴 글자를 가진 단어
+		String newWord; // 게임을 위해 선정된 단어
+		Scanner scanner; // 키 입력
+		int failCount; // 틀린 횟수
+		
+		
+		
 		   public HangMan() { 
 		      scanner = new Scanner(System.in);
 		   }
