@@ -7,8 +7,9 @@ public class MemberVO {
 	private String Password;
 	private String Nickname;
 	private String Words;
-	private int count=0;
-	private int Rank;
+	private int count = 0;
+	private String Note;
+	private String faillist = "";
 	
 	public MemberVO() {
 		
@@ -59,6 +60,8 @@ public class MemberVO {
 	public int getCount() {
 		return count;
 	}
-	
+	public String getFaillist() {
+		return faillist;
+	}
 
 }

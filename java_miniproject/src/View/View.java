@@ -6,6 +6,9 @@ import java.util.Scanner;
 import java_miniproject.Controller;
 import java_miniprojectModel.MemberDAO;
 import java_miniprojectModel.MemberVO;
+import java_miniprojectModel.MissDAO;
+import java_miniprojectModel.RankDAO;
+import java_miniprojectModel.RankVO;
 
 
 public class View {
@@ -16,8 +19,14 @@ public class View {
 		Scanner sc = new Scanner(System.in);
 		Controller M_C = new Controller();
 		MemberDAO M_DAO = new MemberDAO();
+		Controller R_C = new Controller();
+		RankDAO R_DAO = new RankDAO();
+		Controller Mi_C = new Controller();
+		MissDAO Mi_DAO = new MissDAO();
 		
 		int menu, InMenu,level;
+		String ID, Password;
+		boolean check;
 
 		while (true) {
 			System.out.print("[1]로그인 [2]회원가입 [3]종료 => ");
@@ -26,10 +35,10 @@ public class View {
 			if (menu == 1) {//로그인
 				System.out.println("=============로그인============");
 				System.out.print("ID 입력 : ");
-				String ID = sc.next();
+				ID = sc.next();
 				System.out.print("PW 입력 : ");
-				String Password = sc.next();
-				boolean check = M_DAO.Login(ID, Password);
+				Password = sc.next();
+				check = M_DAO.Login(ID, Password);
 			
 				
 				
@@ -55,11 +64,11 @@ public class View {
 				
 					
 					else if(InMenu==2) { //랭킹확인
-						ArrayList<MemberVO> al = M_DAO.select_Lank();
+						ArrayList<RankVO> al = R_DAO.select_Lank();
 						
 						System.out.println("==============랭킹===============");
-						for(MemberVO v: al) {
-							System.out.println(v.getID()+ " " + v.getCount());
+						for(RankVO v: al) {
+							System.out.println(v.getRank()+v.getNickname()+v.getCount());
 						
 						}
 					
@@ -69,7 +78,13 @@ public class View {
 					}
 					
 					else if (InMenu==3) { //오답노트 
+						ArrayList<String> al = Mi_DAO.select_AllMiss();
 						
+						System.out.println("================오답노트==============");
+						for(String v : al) {
+							System.out.println(v);
+						}
+						System.out.println("\n");
 					}
 					
 					else if (InMenu==4) {//종료
@@ -96,14 +111,14 @@ public class View {
 			else if (menu == 2) { //회원가입 
 				System.out.println("=============회원가입============");
 				System.out.print("ID 입력 : ");
-				String ID = sc.next(); //회원가입 D
+				ID = sc.next(); //회원가입 D
 				System.out.print("PW 입력 : ");
-				String Password = sc.next(); //회원가입 PASSWORD
+				Password = sc.next(); //회원가입 PASSWORD
 				System.out.print("닉네임 입력 : ");
 				String Nickname = sc.next(); //회원가입 닉네임
 				
-				boolean check = M_DAO.MemInsert(ID, Password, Nickname); 
-				M_DAO.Insert_Lank(ID);
+				check = M_DAO.MemInsert(ID, Password, Nickname); 
+				R_DAO.Insert_Lank(Nickname);
 				
 				if (check == true) {
 					System.out.println("회원가입을 축하합니다.\n");
@@ -113,19 +128,14 @@ public class View {
 				
 				System.out.println("\n");
 			}
-
-			else if (menu == 3) {
-				System.out.println("게임 종료!");
-				break;
-				
-
+			else if(menu == 3) {
+				System.out.println("==============종료==============");
 			}
-
 			else {
-				System.out.println("\n다시 입력하세요");
-
+				System.out.println("다시 입력해주세요!");
 			}
 
+			
 		}
 
 	}

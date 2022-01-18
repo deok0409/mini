@@ -5,11 +5,19 @@ import java.util.Scanner;
 
 import java_miniprojectModel.MemberDAO;
 import java_miniprojectModel.MemberVO;
+import java_miniprojectModel.RankDAO;
+import java_miniprojectModel.RankVO;
+import java_miniprojectModel.WordDAO;
+import java_miniprojectModel.WordVO;
 
 public class Controller {
 	
 	MemberVO M_VO = new MemberVO();
 	MemberDAO m = new MemberDAO();
+	RankVO R_VO = new RankVO();
+	RankDAO r = new RankDAO();
+	WordVO W_VO = new WordVO();
+	WordDAO w = new WordDAO();
 	
 	int hiddenChar; // ºóÄ­ °³¼ö
 	StringBuffer hiddenWord; // ºóÄ­¶ÕÀº ´Ü¾î ÀúÀå
@@ -42,7 +50,7 @@ public class Controller {
 		      }
 		      
 	    	  while(true){
-	    		  newWord = m.Load_words();
+	    		  newWord = w.Load_words();
 	    		  if(newWord ==null) System.out.println(newWord);
 	    		  
 	    		  if (newWord.length() <= hiddenChar) // ´Ü¾î±æÀÌÂªÀ¸¸é
@@ -101,15 +109,15 @@ public class Controller {
     	  
     	  if(level==1) {
     		  cnt+=1;
-    		  m.Update_Lank(ID, cnt);
+    		  r.Update_Lank(ID, cnt);
     	  }
     	  else if (level==2)   {
     		  cnt+=3;
-    		  m.Update_Lank(ID, cnt);
+    		  r.Update_Lank(ID, cnt);
     		 
     		  }
     	  else cnt+=5;{
-    		  m.Update_Lank(ID, cnt);
+    		  r.Update_Lank(ID, cnt);
     		 
     	  }
     	  
