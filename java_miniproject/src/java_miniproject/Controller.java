@@ -25,7 +25,7 @@ public class Controller {
 	Scanner scanner;
 	int failCount; // Æ²¸° È½¼ö
 	int cnt =0;
-	
+	//
 	public int turn() {
 		System.out.println(cnt);
 		return cnt;
