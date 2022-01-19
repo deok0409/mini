@@ -18,7 +18,7 @@ public class Controller {
 	RankDAO r = new RankDAO();
 	WordVO W_VO = new WordVO();
 	WordDAO w = new WordDAO();
-	
+	//
 	int hiddenChar; // ºóÄ­ °³¼ö
 	StringBuffer hiddenWord; // ºóÄ­¶ÕÀº ´Ü¾î ÀúÀå
 	String newWord=null; // ¼±ÃâµÈ ·£´ı ´Ü¾î.
