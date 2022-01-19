@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MemberDAO {
-	//
+	
 	Connection conn=null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
@@ -20,9 +20,9 @@ public class MemberDAO {
 		//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String password="hr";
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String user = "campus_d_1_0115";
+		String password="smhrd1";
 
 		//2. 사용할 계정 선택, db 연결 객체 (Connection) 생성
 		 conn = DriverManager.getConnection(url, user, password);
@@ -68,10 +68,11 @@ public class MemberDAO {
 				connect();
 				
 			
-				String sql = "insert into mem values(?, ?, ?)";
+				String sql = "insert into ENGLISHGAME_USER values(?, ?, ?)";
 			
 				 pst = conn.prepareStatement(sql);
-			
+				 
+				
 				pst.setString(1, name );
 				pst.setString(2, Password);
 				pst.setString(3, Nickname);
@@ -125,7 +126,7 @@ public class MemberDAO {
 				connect();
 				
 				//3. 실행할 sql문 정의
-				String sql = "select * from mem where ID=? and password=?";
+				String sql = "select * from ENGLISHGAME_USER where ID=? and password=?";
 				
 				//4. sql구문 준비 객체(PreparedStatement) 생성
 				//String sql = "select * from student where num=";
@@ -172,6 +173,58 @@ public class MemberDAO {
 		
 			return check;
 		}
+//////////////////////////////////구분선 /////////////////////////////////
+		//3. 관리자 전체 삭제 및 부분삭제
+		public boolean Admin_Allclear(String name, String Password, String Nickname) {
+			
+
+			boolean check = false;
+			
+			try { 
+				
+				connect();
+				
+			
+				String sql = "insert into ENGLISHGAME_USER values(?, ?, ?)";
+			
+				 pst = conn.prepareStatement(sql);
+				 
+				
+				pst.setString(1, name );
+				pst.setString(2, Password);
+				pst.setString(3, Nickname);
+			
+				
+			
+				int cnt = pst.executeUpdate();
+				
+				if (cnt>0) { //추가 성공
+					check = true;
+				}
+				else {	//추가 실패
+					check = false;
+				}
+				
+				
+				
+				
+			
+			} catch (Exception e) { 
+			
+				e.printStackTrace(); 
+				
+			
+				
+			}finally {
+			
+				close();
+			}
+			return check;
+
+		
+		
+		
+	}
 }
 	
 

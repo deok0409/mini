@@ -20,9 +20,9 @@ public class RankDAO {
 		//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String password="hr";
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String user = "campus_d_1_0115";
+		String password="smhrd1";
 
 		//2. 사용할 계정 선택, db 연결 객체 (Connection) 생성
 		 conn = DriverManager.getConnection(url, user, password);
@@ -55,7 +55,7 @@ public class RankDAO {
 		}
 	}
 	
-	public void Insert_Lank(String ID) { //랭킹테이블에 점수 삽입
+	public void Insert_Lank(String ID) { //회원가입과 동시에 랭킹테이블에 점수 초기화
 
 
 		try { 
@@ -65,8 +65,8 @@ public class RankDAO {
 			 pst = conn.prepareStatement(sql);
 			//다시 실행해주세요!
 			//5. 바인드 변수 채우기
-			pst.setString(1, ID);
-			pst.setInt(2, 0);
+			pst.setInt(1, 0);
+			pst.setString(2, ID);
 			
 
 			int cnt = pst.executeUpdate();
@@ -88,13 +88,13 @@ public class RankDAO {
 		
 		try { 
 			connect();
-			String sql = "update rank set ID=?, COUNT=? where ID=?";
+			String sql = "update rank set SCORE=?, ID=? where ID=?";
 			
 			 pst = conn.prepareStatement(sql);
 			//다시 실행해주세요!
 			//5. 바인드 변수 채우기
-			pst.setString(1, ID);
-			pst.setInt(2, cn);
+			pst.setInt(1, cn);
+			pst.setString(2, ID);
 			pst.setString(3, ID);
 			
 
@@ -124,7 +124,9 @@ public class RankDAO {
 			connect();
 			
 			//3. 실행할 sql문 정의
-			String sql = "select * from rank order by count desc";
+			String sql = "select id, score, "
+					+ "dense_rank() over(order by score desc) as rank "
+					+ "from rank";
 			
 			//4. sql구문 준비 객체(PreparedStatement) 생성
 			pst = conn.prepareStatement(sql);
@@ -134,12 +136,13 @@ public class RankDAO {
 			
 			//STUDENT 테이블에 있는 값을 읽어서 출력 (각 학생의 정보 출력)
 			while(rs.next()) {
-				String nickname = rs.getString("nickname");
-				int Rank = rs.getInt("Rank");
-				int COUNT = rs.getInt("COUNT");
+				String ID = rs.getString("ID");
+				//int Rank = rs.getInt("Rank");
+				int COUNT = rs.getInt("score");
+				int RANK = rs.getInt("rank");
 				
 								
-				al.add( new RankVO(Rank,nickname,COUNT));
+				al.add( new RankVO(RANK,ID,COUNT));
 				
 				
 			}

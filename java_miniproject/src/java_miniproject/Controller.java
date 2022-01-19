@@ -18,14 +18,14 @@ public class Controller {
 	RankDAO r = new RankDAO();
 	WordVO W_VO = new WordVO();
 	WordDAO w = new WordDAO();
-	//
+	
 	int hiddenChar; // ºóÄ­ °³¼ö
 	StringBuffer hiddenWord; // ºóÄ­¶ÕÀº ´Ü¾î ÀúÀå
 	String newWord=null; // ¼±ÃâµÈ ·£´ý ´Ü¾î.
 	Scanner scanner;
 	int failCount; // Æ²¸° È½¼ö
 	int cnt =0;
-	//
+	
 	public int turn() {
 		System.out.println(cnt);
 		return cnt;
@@ -107,6 +107,8 @@ public class Controller {
     	  
     	  System.out.println("\nWord >> "+newWord);
     	  
+    	  
+    	  if(failCount!=5) {
     	  if(level==1) {
     		  cnt+=1;
     		  r.Update_Lank(ID, cnt);
@@ -119,6 +121,7 @@ public class Controller {
     	  else cnt+=5;{
     		  r.Update_Lank(ID, cnt);
     		 
+    	  }
     	  }
     	  
       }

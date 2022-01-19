@@ -19,9 +19,9 @@ public class WordDAO {
 		//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String password="hr";
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String user = "campus_d_1_0115";
+		String password="smhrd1";
 
 		//2. 사용할 계정 선택, db 연결 객체 (Connection) 생성
 		 conn = DriverManager.getConnection(url, user, password);
@@ -64,8 +64,8 @@ public class WordDAO {
 			connect();
 			
 			String sql = "select * from("
-					+ "    select * from words"
-					+ "    order by DBMS_RANDOM.RANDOM"
+					+ "	select * from ENGLISHGAME"
+					+ " order by DBMS_RANDOM.RANDOM"
 					+ ") where rownum < 2";
 				
 			pst = conn.prepareStatement(sql);
@@ -73,7 +73,7 @@ public class WordDAO {
 			 rs = pst.executeQuery();
 				 if(rs.next()) {
 					
-					  a=rs.getString("words"); 
+					  a=rs.getString("word"); 
 					 
 					 words = new MemberVO(a);
 					 

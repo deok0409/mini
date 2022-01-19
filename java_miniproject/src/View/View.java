@@ -11,6 +11,7 @@ import java_miniprojectModel.RankDAO;
 import java_miniprojectModel.RankVO;
 
 
+
 public class View {
 
 	public static void main(String[] args) {
@@ -48,7 +49,7 @@ public class View {
 					System.out.println("로그인 성공!.\n");
 					
 					while(true) {
-					System.out.print("[1]게임시작 [2]랭킹확인 [3]오답노트 [4]종료 => ");
+					System.out.print("[1]게임시작 [2]랭킹확인 [3]종료 => ");
 					InMenu=sc.nextInt();
 					
 					if(InMenu==1) { //난이도 선택
@@ -67,16 +68,27 @@ public class View {
 						ArrayList<RankVO> al = R_DAO.select_Lank();
 						
 						System.out.println("==============랭킹===============");
+						System.out.println("   ID      SCORE      RANK");
+						System.out.println("===============================");
 						for(RankVO v: al) {
-							System.out.println(v.getRank()+v.getNickname()+v.getCount());
-						
+							System.out.print("   ");
+							System.out.print(v.getNickname());
+							
+							//ID 글자수에 따라 가변 띄어쓰기 
+							for(int i=0+v.getNickname().length()+1; i<10; i++) {
+								System.out.print(" ");
+								
+							}
+							System.out.print(v.getCount());
+							System.out.print("          ");
+							System.out.println(v.getRank());
 						}
 					
 						
 						System.out.println("\n");
 						
 					}
-					
+					/*
 					else if (InMenu==3) { //오답노트 
 						ArrayList<String> al = Mi_DAO.select_AllMiss();
 						
@@ -85,9 +97,11 @@ public class View {
 							System.out.println(v);
 						}
 						System.out.println("\n");
+						
 					}
+					*/
 					
-					else if (InMenu==4) {//종료
+					else if (InMenu==3) {//종료
 						System.out.println("종료");
 						break;
 					}
@@ -130,6 +144,7 @@ public class View {
 			}
 			else if(menu == 3) {
 				System.out.println("==============종료==============");
+				break;
 			}
 			else {
 				System.out.println("다시 입력해주세요!");

@@ -20,9 +20,9 @@ public class MissDAO {
 		//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String password="hr";
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String user = "campus_d_1_0115";
+		String password="smhrd1";
 
 		//2. 사용할 계정 선택, db 연결 객체 (Connection) 생성
 		 conn = DriverManager.getConnection(url, user, password);
@@ -58,7 +58,7 @@ public class MissDAO {
 		
 		try {
 			connect();
-			String sql = "insert into miss values(?)";
+			String sql = "insert into ENGLISHGAMENOTE values(?)";
 			
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, Miss_answer);
@@ -82,7 +82,7 @@ public class MissDAO {
 		try {
 			connect();
 			
-			String sql = "select * from miss";
+			String sql = "select * from ENGLISHGAMENOTE";
 			
 			pst = conn.prepareStatement(sql);
 			
