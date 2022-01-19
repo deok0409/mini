@@ -3,6 +3,7 @@ package java_miniproject;
 import java.util.Random;
 import java.util.Scanner;
 
+import View.View;
 import java_miniprojectModel.MemberDAO;
 import java_miniprojectModel.MemberVO;
 import java_miniprojectModel.RankDAO;
@@ -18,6 +19,7 @@ public class Controller {
 	RankDAO r = new RankDAO();
 	WordVO W_VO = new WordVO();
 	WordDAO w = new WordDAO();
+	View Vi = new View();
 	
 	int hiddenChar; // 빈칸 개수
 	StringBuffer hiddenWord; // 빈칸뚫은 단어 저장
@@ -139,6 +141,9 @@ public class Controller {
     	  
     	  if(!hit) // hit이 false면 카운트 증가.
     		  failCount++;
+    	  	
+    	  
+    	  Vi.draw(failCount);
     	  
     	  for(int i=0; i<newWord.length(); i++){
     		  if(hiddenWord.charAt(i) == '-') // 단어에 빈칸이있는지 검사
