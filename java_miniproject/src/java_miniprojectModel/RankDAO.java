@@ -55,18 +55,19 @@ public class RankDAO {
 		}
 	}
 	
-	public void Insert_Lank(String ID) { //회원가입과 동시에 랭킹테이블에 점수 초기화
+	public void Insert_Lank(String ID, String Nickname) { //회원가입과 동시에 랭킹테이블에 점수 초기화
 
 
 		try { 
 			connect();
-			String sql = "insert into rank values(?, ?)";
+			String sql = "insert into rank values(?, ?, ?)";
 			
 			 pst = conn.prepareStatement(sql);
 			//다시 실행해주세요!
 			//5. 바인드 변수 채우기
 			pst.setInt(1, 0);
 			pst.setString(2, ID);
+			pst.setString(3, Nickname);
 			
 
 			int cnt = pst.executeUpdate();
@@ -124,19 +125,60 @@ public class RankDAO {
 		return SCORE;
 	}
 	
+	public String select_Nickname(String ID) { //ID로 점수 찾는 메소드
+		String Nickname=null;
+		ResultSet rs = null;
 	
-	public void Update_Lank(String ID, int cn) {
+		try {
+			//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
+			connect();
+			
+			//3. 실행할 sql문 정의
+			String sql = "select nickname from rank where ID=?";
+					
+			//4. sql구문 준비 객체(PreparedStatement) 생성
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, ID);
+			
+			//5. sql문을 실행하고 결과 처리
+			 rs = pst.executeQuery();
+			
+			//STUDENT 테이블에 있는 값을 읽어서 출력 (각 학생의 정보 출력)
+			while(rs.next()) {
+				
+				Nickname = rs.getString("nickname");
+				
+
+				
+			}
+
+		}
+		
+		catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			//객체들 (Connection, PrepaaredStatement, ResultSet) 마무리
+			close();
+			
+			
+		}
+		return Nickname;
+	}
+	
+	
+	public void Update_Lank(String ID, int cn, String Nickname) {
 		
 		try { 
 			connect();
-			String sql = "update rank set SCORE=?, ID=? where ID=?";
+			String sql = "update rank set SCORE=?, ID=?, Nickname=? where ID=?";
 			
 			 pst = conn.prepareStatement(sql);
 			//다시 실행해주세요!
 			//5. 바인드 변수 채우기
 			pst.setInt(1, cn);
 			pst.setString(2, ID);
-			pst.setString(3, ID);
+			pst.setString(3, Nickname);
+			pst.setString(4, ID);
 
 			int cnt = pst.executeUpdate();
 
@@ -162,7 +204,7 @@ public class RankDAO {
 			connect();
 			
 			//3. 실행할 sql문 정의
-			String sql = "select id, score, "
+			String sql = "select nickname, score, "
 					+ "dense_rank() over(order by score desc) as rank "
 					+ "from rank";
 			
@@ -174,13 +216,13 @@ public class RankDAO {
 			
 			//STUDENT 테이블에 있는 값을 읽어서 출력 (각 학생의 정보 출력)
 			while(rs.next()) {
-				String ID = rs.getString("ID");
+				String Nickname = rs.getString("nickname");
 				//int Rank = rs.getInt("Rank");
 				int COUNT = rs.getInt("score");
 				int RANK = rs.getInt("rank");
 				
 								
-				al.add( new RankVO(RANK,ID,COUNT));
+				al.add( new RankVO(RANK, Nickname, COUNT));
 				
 				
 			}
