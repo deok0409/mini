@@ -174,57 +174,7 @@ public class MemberDAO {
 			return check;
 		}
 //////////////////////////////////구분선 /////////////////////////////////
-		//3. 관리자 전체 삭제 및 부분삭제
-		public boolean Admin_Allclear(String name, String Password, String Nickname) {
-			
-
-			boolean check = false;
-			
-			try { 
-				
-				connect();
-				
-			
-				String sql = "insert into ENGLISHGAME_USER values(?, ?, ?)";
-			
-				 pst = conn.prepareStatement(sql);
-				 
-				
-				pst.setString(1, name );
-				pst.setString(2, Password);
-				pst.setString(3, Nickname);
-			
-				
-			
-				int cnt = pst.executeUpdate();
-				
-				if (cnt>0) { //추가 성공
-					check = true;
-				}
-				else {	//추가 실패
-					check = false;
-				}
-				
-				
-				
-				
-			
-			} catch (Exception e) { 
-			
-				e.printStackTrace(); 
-				
-			
-				
-			}finally {
-			
-				close();
-			}
-			return check;
-
 		
-		
-		
-	}
 }
 	
 

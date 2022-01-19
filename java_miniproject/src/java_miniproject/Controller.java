@@ -28,10 +28,7 @@ public class Controller {
 	int failCount; // 틀린 횟수
 	int cnt =0;
 	
-	public int turn() {
-		System.out.println(cnt);
-		return cnt;
-	}
+
 	
 	public Controller(){
 		scanner = new Scanner(System.in);
@@ -63,6 +60,7 @@ public class Controller {
 	    	  
 	    	  
     		  makeHidden(); // 글자를 숨긴 단어 만들기
+    		  cnt = r.select_SCORE(ID);
     		  go(ID ,level);
     		  
     		  System.out.print("Continue? (y/n)");
@@ -92,6 +90,7 @@ public class Controller {
       }
       
       void go(String ID,int level){
+    	  
     	  failCount = 0;
     	  char key;
     	  do{
@@ -114,14 +113,18 @@ public class Controller {
     	  if(level==1) {
     		  cnt+=1;
     		  r.Update_Lank(ID, cnt);
+    		  System.out.println("확인용:::::1번: " + cnt);
     	  }
     	  else if (level==2)   {
     		  cnt+=3;
     		  r.Update_Lank(ID, cnt);
+    		  System.out.println("확인용:::::2번: " + cnt);
     		 
     		  }
-    	  else cnt+=5;{
+    	  else if(level==3) { 
+    		  cnt+=5;
     		  r.Update_Lank(ID, cnt);
+    		  System.out.println("확인용:::::3번: " + cnt);
     		 
     	  }
     	  }

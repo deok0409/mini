@@ -142,7 +142,7 @@ public class View {
 				String Nickname = sc.next(); // 회원가입 닉네임
 
 				check = M_DAO.MemInsert(ID, Password, Nickname);
-				R_DAO.Insert_Lank(Nickname);
+				R_DAO.Insert_Lank(ID);
 
 				if (check == true) {
 					System.out.println("회원가입을 축하합니다.\n");

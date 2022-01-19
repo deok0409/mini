@@ -84,6 +84,47 @@ public class RankDAO {
 		
 	}
 	
+	public int select_SCORE(String ID) { //ID로 점수 찾는 메소드
+		int SCORE=0;
+		ResultSet rs = null;
+	
+		try {
+			//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
+			connect();
+			
+			//3. 실행할 sql문 정의
+			String sql = "select score from rank where ID=?";
+					
+			//4. sql구문 준비 객체(PreparedStatement) 생성
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, ID);
+			
+			//5. sql문을 실행하고 결과 처리
+			 rs = pst.executeQuery();
+			
+			//STUDENT 테이블에 있는 값을 읽어서 출력 (각 학생의 정보 출력)
+			while(rs.next()) {
+				
+				SCORE = rs.getInt("score");
+				
+
+				
+			}
+
+		}
+		
+		catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			//객체들 (Connection, PrepaaredStatement, ResultSet) 마무리
+			close();
+			
+			
+		}
+		return SCORE;
+	}
+	
+	
 	public void Update_Lank(String ID, int cn) {
 		
 		try { 
@@ -96,15 +137,12 @@ public class RankDAO {
 			pst.setInt(1, cn);
 			pst.setString(2, ID);
 			pst.setString(3, ID);
-			
 
 			int cnt = pst.executeUpdate();
 
 
 		} catch (Exception e) { 
 			e.printStackTrace(); 
-			
-			
 		}finally {
 			
 			close();
