@@ -40,7 +40,7 @@ public class View {
 			if (menu == 1) {// 로그인
 				
 				MP3.stop();
-				System.out.println("\n=============로그인=============");
+				System.out.println("\n─────────────로그인─────────────");
 				System.out.print("ID 입력 : ");
 				ID = sc.next();
 				System.out.print("PW 입력 : ");
@@ -49,20 +49,21 @@ public class View {
 
 				if (check == true) {// 로그인 성공시
 					Controller Game = new Controller();
-					
-					System.out.println("==============================");
+					System.out.println("\n");
+					System.out.println("┌───────────────────────────┐");
+					System.out.print("│ ");
 					for(int i=0; i<5; i++) {
-					System.out.print("■■■■■■");
+					System.out.print("■■■■■");
 					try {
-						Thread.sleep(300);
+						Thread.sleep(150);
 					}
 					catch(InterruptedException e) {
 						System.out.println(e.getMessage());
 					}
 					}
-
-					System.out.println("\n\n\t   로그인 성공!\n");
-					System.out.println("==============================\n");
+					System.out.print(" │");
+					System.out.println("\n│\t   로그인 성공!\t    │");
+					System.out.println("└───────────────────────────┘");
 					
 
 					while (true) {
@@ -72,9 +73,9 @@ public class View {
 						if (InMenu == 1) { // 난이도 선택
 
 							System.out.println("\n\n");
-							System.out.println("=====================================================");
-							System.out.println("	 	   HANGMAN GAME");
-							System.out.println("=====================================================\n\n");
+							System.out.println("┌───────────────────────────────────────────────────┐");
+							System.out.println("│	 	   HANGMAN GAME\t\t\t    │");
+							System.out.println("└───────────────────────────────────────────────────┘\n\n");
 
 							System.out.println("MMMMK;'0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
 									+ "'0MMMMMMMM\r\n"
@@ -102,7 +103,7 @@ public class View {
 									+ "MMMMMMMWWMMNXNMMMMMMMMMMMMMMMMMX:  ;0o  '0K;  ;KMM\r\n"
 									+ "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK; .kWk. :XMO' ,0MM\n\n");	
 
-							System.out.println("=======================난이도 선택=======================");
+							System.out.println("──────────────────────난이도 선택────────────────────────");
 							System.out.print("[1]EASY [2]NORMAL [3]HARD >> ");
 							level = sc.nextInt();
 
@@ -114,25 +115,18 @@ public class View {
 						else if (InMenu == 2) { // 랭킹확인
 							ArrayList<RankVO> al = R_DAO.select_Lank();
 							System.out.println("\n");
-							System.out.println("==============랭킹===================");
-							System.out.println("   Nickname      SCORE      RANK");
-							System.out.println("====================================");
+							System.out.println("┌─────────────────────────────────────┐");
+							System.out.println("│Nickname\tSCORE\t\tRANK  │");
+							System.out.println("│─────────────────────────────────────│");
 							
 							for (RankVO v : al) {
-								System.out.print("   ");
-								System.out.print(v.getNickname());
-
-								// ID 글자수에 따라 가변 띄어쓰기
-								for (int i = 0 + v.getNickname().length(); i < 15; i++) {
-									System.out.print(" ");
-
-								}
-								System.out.print(v.getCount());
-								System.out.print("          ");
-								System.out.println(v.getRank());
+								
+								System.out.print("│"+ v.getNickname() + "\t\t");
+								System.out.print(v.getCount()+ "\t\t");
+								System.out.println(v.getRank()+"     │");
 							}
 
-							System.out.println("====================================");
+							System.out.println("└─────────────────────────────────────┘");
 							System.out.println("\n");
 
 						}
@@ -162,6 +156,7 @@ public class View {
 			}
 
 			else if (menu == 2) { // 회원가입
+				MP3.stop();
 				System.out.println("=============회원가입============");
 				System.out.print("ID 입력 : ");
 				ID = sc.next(); // 회원가입 D
@@ -181,9 +176,11 @@ public class View {
 
 				System.out.println("\n");
 			} else if (menu == 3) {
+				MP3.stop();
 				System.out.println("==============종료==============");
 				break;
 			} else {
+				MP3.stop();
 				System.out.println("다시 입력해주세요!");
 			}
 

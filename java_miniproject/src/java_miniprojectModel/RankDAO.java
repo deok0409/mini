@@ -200,24 +200,21 @@ public class RankDAO {
 		ArrayList<RankVO> al = new ArrayList<RankVO>();
 		
 		try {
-			//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
+
 			connect();
-			
-			//3. 실행할 sql문 정의
+
 			String sql = "select nickname, score, "
 					+ "dense_rank() over(order by score desc) as rank "
 					+ "from rank";
 			
-			//4. sql구문 준비 객체(PreparedStatement) 생성
+
 			pst = conn.prepareStatement(sql);
-			
-			//5. sql문을 실행하고 결과 처리
+
 			 rs = pst.executeQuery();
 			
-			//STUDENT 테이블에 있는 값을 읽어서 출력 (각 학생의 정보 출력)
+		
 			while(rs.next()) {
 				String Nickname = rs.getString("nickname");
-				//int Rank = rs.getInt("Rank");
 				int COUNT = rs.getInt("score");
 				int RANK = rs.getInt("rank");
 				

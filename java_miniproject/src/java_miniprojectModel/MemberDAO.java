@@ -87,10 +87,7 @@ public class MemberDAO {
 				else {	//추가 실패
 					check = false;
 				}
-				
-				
-				
-				
+
 			
 			} catch (Exception e) { 
 			
@@ -112,9 +109,6 @@ public class MemberDAO {
 //////////////////////////////////구분선 /////////////////////////////////
 		//기능2. 로그인
 		public boolean Login(String ID, String Password) {
-			//selectStd -> 수정 : ArrayList에 담을 필요 없음!
-			//sql문 수정 (조건이 필요! : 학생번호로(사용자 입력) 로 검색), insert참고
-			//반환타입, 매개변수 결정!
 
 			ResultSet rs = null;
 			
@@ -122,36 +116,25 @@ public class MemberDAO {
 			
 			
 			try {
-				//1. Oracle JDBC driver 동적로딩(실행할때 가지고 오겠다!)
+		
 				connect();
 				
-				//3. 실행할 sql문 정의
-				String sql = "select * from ENGLISHGAME_USER where ID=? and password=?";
+				String sql = "select * from ENGLISHGAME_USER where ID=?"
+						+ " and password=?";
 				
-				//4. sql구문 준비 객체(PreparedStatement) 생성
-				//String sql = "select * from student where num=";
-				//pst = conn.prepareStatement(sql + n); 도 가능
-				
+
 				pst = conn.prepareStatement(sql);
 				
-				
-				//4-1. 바인드 변수 채우기
 				pst.setString(1, ID);
 				pst.setString(2, Password);
 				
-				//5. sql문을 실행하고 결과 처리
+		
 				 rs = pst.executeQuery();
 				
-				//STUDENT 테이블에 있는 값을 읽어서 출력 (각 학생의 정보 출력)
-				
-				//->resultset 상에 해당 번호가 table상에 존재하면 최대 1명에대한 데이터만 존재
-				 //존재하지 않으면 데이터 X
-				 
+			
 					 if(rs.next()) {
 						check = true;
 
-		
-					
 					 }
 					 
 					 else {
@@ -161,11 +144,10 @@ public class MemberDAO {
 					 }
 		
 			}
-			
 			catch(Exception e) {
 				e.printStackTrace();
 			}finally {
-				//객체들 (Connection, PrepaaredStatement, ResultSet) 마무리
+	
 				close();
 				
 				
