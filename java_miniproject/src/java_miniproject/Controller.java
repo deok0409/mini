@@ -3,6 +3,7 @@ package java_miniproject;
 import java.util.Random;
 import java.util.Scanner;
 
+import BGM.BGM_Controller;
 import View.View;
 import java_miniprojectModel.MemberDAO;
 import java_miniprojectModel.MemberVO;
@@ -20,6 +21,7 @@ public class Controller {
 	WordVO W_VO = new WordVO();
 	WordDAO w = new WordDAO();
 	View Vi = new View();
+	BGM_Controller MP3 = new BGM_Controller() ;
 	
 	int hiddenChar; // 빈칸 개수
 	StringBuffer hiddenWord; // 빈칸뚫은 단어 저장
@@ -112,17 +114,20 @@ public class Controller {
     	  if(failCount!=5) {
     	  if(level==1) {
     		  cnt+=1;
+    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\빠--빠-.mp3");
     		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::LEVEL 1: " + cnt);
     	  }
     	  else if (level==2)   {
     		  cnt+=3;
+    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\빠--빠-.mp3");
     		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::LEVEL 2: " + cnt);
     		 
     		  }
     	  else if(level==3) { 
     		  cnt+=5;
+    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\빠--빠-.mp3");
     		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::LEVEL 3 " + cnt);
     		 
@@ -142,8 +147,10 @@ public class Controller {
     		  }
     	  }
     	  
-    	  if(!hit) // hit이 false면 카운트 증가.
+    	  if(!hit) {// hit이 false면 카운트 증가.
     		  failCount++;
+    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\띠-으-으.mp3");
+    	  }
     	  	
     	  
     	  Vi.draw(failCount);

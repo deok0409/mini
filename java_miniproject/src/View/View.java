@@ -192,8 +192,11 @@ public class View {
 	}
 
 	public void draw(int life) {
+		BGM_Controller MP3 = new BGM_Controller() ;
+		
 		switch (life) {
 		case 5:
+			MP3.play("C:\\Users\\smhrd\\Desktop\\music\\허무한 결말.mp3");
 			System.out.println("\n\n");
 			System.out.println("MMMMK;'0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
 					+ "'0MMMMMMMM\r\n"
@@ -223,6 +226,7 @@ public class View {
 			System.out.println("\n\n");
 			break;
 		case 4:
+		
 			System.out.println("\n\n");
 			
 			System.out.println("MMMMK;'0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
@@ -252,7 +256,9 @@ public class View {
 					+ "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK; .kWk. :XMO' ,0MM\n\n");
 			System.out.println("\n\n");
 			break;
+			
 		case 3:
+			
 			System.out.println("\n\n");
 			System.out.println("MMMMK;'0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
 					+ "'0MMMMMMMM\r\n"
@@ -282,6 +288,7 @@ public class View {
 			System.out.println("\n");
 			break;
 		case 2:
+			
 			System.out.println("\n\n");
 			System.out.println("MMMMK;'0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
 					+ "'0MMMMMMMM\r\n"
@@ -311,6 +318,7 @@ public class View {
 			System.out.println("\n\n");
 			break;
 		case 1:
+			
 			System.out.println("\n\n");
 			System.out.println("MMMMK;'0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
 					+ "'0MMMMMMMM\r\n"
