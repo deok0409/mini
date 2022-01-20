@@ -53,7 +53,7 @@ public class View {
 					System.out.println("┌───────────────────────────┐");
 					System.out.print("│ ");
 					for(int i=0; i<5; i++) {
-					System.out.print("■■■■■");
+					System.out.print("■■");
 					try {
 						Thread.sleep(150);
 					}
@@ -61,8 +61,9 @@ public class View {
 						System.out.println(e.getMessage());
 					}
 					}
-					System.out.print(" │");
-					System.out.println("\n│\t   로그인 성공!\t    │");
+					System.out.print("■■");
+					System.out.print("   │");
+					System.out.println("\n│\t   로그인 성공!   \t    │");
 					System.out.println("└───────────────────────────┘");
 					
 
