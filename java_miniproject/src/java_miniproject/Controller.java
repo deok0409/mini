@@ -114,20 +114,20 @@ public class Controller {
     	  if(failCount!=5) {
     	  if(level==1) {
     		  cnt+=1;
-    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\빠--빠-.mp3");
+    		  MP3.play("빠--빠-.mp3");
     		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::LEVEL 1: " + cnt);
     	  }
     	  else if (level==2)   {
     		  cnt+=3;
-    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\빠--빠-.mp3");
+    		  MP3.play("빠--빠-.mp3");
     		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::LEVEL 2: " + cnt);
     		 
     		  }
     	  else if(level==3) { 
     		  cnt+=5;
-    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\빠--빠-.mp3");
+    		  MP3.play("빠--빠-.mp3");
     		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::LEVEL 3 " + cnt);
     		 
@@ -144,14 +144,14 @@ public class Controller {
     			  // i번째 빈칸의 글자를 맞춘경우.
     			  hiddenWord.setCharAt(i, key); // I를 key로 바꿈.
     			  hit = true;
-    			  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\맞추었어.mp3");
+    			  MP3.play("맞추었어.mp3");
     		  }
     	  }
     	  
     	  if(!hit) {// hit이 false면 카운트 증가.
     		  failCount++;
     		  if(failCount!=5)
-    		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\띠-으-으.mp3");
+    		  MP3.play("띠-으-으.mp3");
     	  }
     	  	
     	  

@@ -10,8 +10,8 @@ public class BGM_Controller {
 
 
 	
-	public static void play(String path) {
-		mp3.play(path);	
+	public static void play(String filename) {
+		mp3.play("C:\\Users\\smhrd\\Desktop\\music\\" + filename);	
 		
 	}
 	

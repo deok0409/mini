@@ -32,7 +32,7 @@ public class View {
 		
 		while (true) {
 			
-	    	MP3.play("C:\\Users\\smhrd\\Desktop\\music\\game-music-7408.mp3");
+	    	MP3.play("game-music-7408.mp3");
 	    	
 			System.out.print("[1]로그인 [2]회원가입 [3]종료 => ");
 			menu = sc.nextInt();
@@ -62,8 +62,8 @@ public class View {
 					}
 					}
 					System.out.print("■■");
-					System.out.print("   │");
-					System.out.println("\n│\t   로그인 성공!   \t    │");
+					System.out.print("  │");
+					System.out.println("\n│\t 로그인 성공!       │");
 					System.out.println("└───────────────────────────┘");
 					
 
@@ -194,7 +194,7 @@ public class View {
 		
 		switch (life) {
 		case 5:
-			MP3.play("C:\\Users\\smhrd\\Desktop\\music\\허무한 결말.mp3");
+			MP3.play("허무한 결말.mp3");
 			System.out.println("\n\n");
 			System.out.println("MMMMK;'0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
 					+ "'0MMMMMMMM\r\n"
