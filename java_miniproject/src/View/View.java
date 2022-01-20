@@ -32,7 +32,7 @@ public class View {
 			menu = sc.nextInt();
 
 			if (menu == 1) {// 로그인
-				System.out.println("=============로그인============");
+				System.out.println("\n=============로그인=============");
 				System.out.print("ID 입력 : ");
 				ID = sc.next();
 				System.out.print("PW 입력 : ");
@@ -42,7 +42,7 @@ public class View {
 				if (check == true) {// 로그인 성공시
 					Controller Game = new Controller();
 					
-					System.out.println("=============================");
+					System.out.println("==============================");
 					for(int i=0; i<5; i++) {
 					System.out.print("■■■■■■");
 					try {
@@ -53,7 +53,8 @@ public class View {
 					}
 					}
 
-					System.out.println("\n로그인 성공!.\n");
+					System.out.println("\n\n\t   로그인 성공!\n");
+					System.out.println("==============================\n");
 					
 
 					while (true) {
@@ -64,7 +65,7 @@ public class View {
 
 							System.out.println("\n\n");
 							System.out.println("===============================");
-							System.out.println("	HANGMAN GAME");
+							System.out.println("	 HANGMAN GAME");
 							System.out.println("===============================\n");
 
 							System.out.println("	    _______ ");
@@ -79,22 +80,23 @@ public class View {
 							level = sc.nextInt();
 
 							System.out.println();
-							Game.run(ID, level);
+							Game.run(ID, level, R_DAO.select_Nickname(ID) );
 
 						}
 
 						else if (InMenu == 2) { // 랭킹확인
 							ArrayList<RankVO> al = R_DAO.select_Lank();
 							System.out.println("\n");
-							System.out.println("==============랭킹===============");
-							System.out.println("   ID      SCORE      RANK");
-							System.out.println("===============================");
+							System.out.println("==============랭킹===================");
+							System.out.println("   Nickname      SCORE      RANK");
+							System.out.println("====================================");
+							
 							for (RankVO v : al) {
 								System.out.print("   ");
 								System.out.print(v.getNickname());
 
 								// ID 글자수에 따라 가변 띄어쓰기
-								for (int i = 0 + v.getNickname().length(); i < 10; i++) {
+								for (int i = 0 + v.getNickname().length(); i < 15; i++) {
 									System.out.print(" ");
 
 								}
@@ -103,7 +105,7 @@ public class View {
 								System.out.println(v.getRank());
 							}
 
-							System.out.println("===============================");
+							System.out.println("====================================");
 							System.out.println("\n");
 
 						}
@@ -142,7 +144,7 @@ public class View {
 				String Nickname = sc.next(); // 회원가입 닉네임
 
 				check = M_DAO.MemInsert(ID, Password, Nickname);
-				R_DAO.Insert_Lank(ID);
+				R_DAO.Insert_Lank(ID, Nickname);
 
 				if (check == true) {
 					System.out.println("회원가입을 축하합니다.\n");

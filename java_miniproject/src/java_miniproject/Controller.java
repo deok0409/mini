@@ -35,7 +35,7 @@ public class Controller {
 	}
 	
 	
-	public void run(String ID,int level){ //게임 실행하는 메소드
+	public void run(String ID,int level, String Nickname){ //게임 실행하는 메소드
 		
 	      
 	      while(true){
@@ -61,7 +61,7 @@ public class Controller {
 	    	  
     		  makeHidden(); // 글자를 숨긴 단어 만들기
     		  cnt = r.select_SCORE(ID);
-    		  go(ID ,level);
+    		  go(ID ,level, Nickname);
     		  
     		  System.out.print("Continue? (y/n)");
     		  String answer = scanner.next();
@@ -89,7 +89,7 @@ public class Controller {
     	  }
       }
       
-      void go(String ID,int level){
+      void go(String ID,int level, String Nickname){
     	  
     	  failCount = 0;
     	  char key;
@@ -112,18 +112,18 @@ public class Controller {
     	  if(failCount!=5) {
     	  if(level==1) {
     		  cnt+=1;
-    		  r.Update_Lank(ID, cnt);
+    		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::1번: " + cnt);
     	  }
     	  else if (level==2)   {
     		  cnt+=3;
-    		  r.Update_Lank(ID, cnt);
+    		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::2번: " + cnt);
     		 
     		  }
     	  else if(level==3) { 
     		  cnt+=5;
-    		  r.Update_Lank(ID, cnt);
+    		  r.Update_Lank(ID, cnt, Nickname);
     		  System.out.println("확인용:::::3번: " + cnt);
     		 
     	  }
