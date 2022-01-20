@@ -144,11 +144,13 @@ public class Controller {
     			  // i번째 빈칸의 글자를 맞춘경우.
     			  hiddenWord.setCharAt(i, key); // I를 key로 바꿈.
     			  hit = true;
+    			  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\맞추었어.mp3");
     		  }
     	  }
     	  
     	  if(!hit) {// hit이 false면 카운트 증가.
     		  failCount++;
+    		  if(failCount!=5)
     		  MP3.play("C:\\Users\\smhrd\\Desktop\\music\\띠-으-으.mp3");
     	  }
     	  	
