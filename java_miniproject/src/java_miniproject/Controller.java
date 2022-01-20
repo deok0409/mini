@@ -113,18 +113,18 @@ public class Controller {
     	  if(level==1) {
     		  cnt+=1;
     		  r.Update_Lank(ID, cnt, Nickname);
-    		  System.out.println("확인용:::::1번: " + cnt);
+    		  System.out.println("확인용:::::LEVEL 1: " + cnt);
     	  }
     	  else if (level==2)   {
     		  cnt+=3;
     		  r.Update_Lank(ID, cnt, Nickname);
-    		  System.out.println("확인용:::::2번: " + cnt);
+    		  System.out.println("확인용:::::LEVEL 2: " + cnt);
     		 
     		  }
     	  else if(level==3) { 
     		  cnt+=5;
     		  r.Update_Lank(ID, cnt, Nickname);
-    		  System.out.println("확인용:::::3번: " + cnt);
+    		  System.out.println("확인용:::::LEVEL 3 " + cnt);
     		 
     	  }
     	  }
